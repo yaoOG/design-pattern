@@ -1,4 +1,4 @@
-package creational.proxy.myproxy;
+package structural.proxy.myproxy;
 
 /**
  * @author zhuyao

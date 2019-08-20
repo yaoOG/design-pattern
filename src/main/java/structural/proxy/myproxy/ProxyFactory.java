@@ -1,4 +1,4 @@
-package creational.proxy.myproxy;
+package structural.proxy.myproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -30,16 +30,11 @@ public class ProxyFactory {
         return Proxy.newProxyInstance(
                 ProxyFactory.target.getClass().getClassLoader(),
                 ProxyFactory.target.getClass().getInterfaces(),
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-                        ProxyFactory.aop.begin();
-                        Object returnValue = method.invoke(ProxyFactory.target, args);
-                        ProxyFactory.aop.close();
-
-                        return returnValue;
-                    }
+                (proxy, method, args) -> {
+                    ProxyFactory.aop.begin();
+                    Object returnValue = method.invoke(ProxyFactory.target, args);
+                    ProxyFactory.aop.close();
+                    return returnValue;
                 }
         );
     }

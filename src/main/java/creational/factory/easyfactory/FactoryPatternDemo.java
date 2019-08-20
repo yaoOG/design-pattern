@@ -20,5 +20,4 @@ public class FactoryPatternDemo {
         //调用 Square 的 draw 方法
         shape3.draw();
     }
-
 }
