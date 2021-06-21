@@ -1,6 +1,6 @@
 
 
-package structural.proxy;
+package structural.proxy.dynamic.jdk2;
 
 /**
  * @author zhuyao

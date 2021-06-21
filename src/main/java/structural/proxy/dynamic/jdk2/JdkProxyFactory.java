@@ -1,8 +1,6 @@
-package structural.proxy;
+package structural.proxy.dynamic.jdk2;
 
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**

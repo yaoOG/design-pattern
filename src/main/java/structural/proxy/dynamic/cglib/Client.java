@@ -1,10 +1,5 @@
-package structural.proxy;
+package structural.proxy.dynamic.cglib;
 
-
-import structural.proxy.myproxy.Aop;
-import structural.proxy.myproxy.ProxyFactory;
-import structural.proxy.myproxy.UserDao;
-import structural.proxy.myproxy.UserDaoInterface;
 
 /**
  * @author zhuyao
@@ -44,31 +39,13 @@ import structural.proxy.myproxy.UserDaoInterface;
 public class Client {
 
     public static void main(String[] args1) {
-
         Client client = new Client();
-//        final JdkProxy jdkProxy = new JdkProxy();
-//        CglibProxy cglibProxy = new CglibProxy();
-//        client.dynamicProxyHandler(jdkProxy);
-//        client.cglibHandler(cglibProxy);
-        client.myProxyHandler();
+        CglibProxy cglibProxy = new CglibProxy();
+        client.cglibHandler(cglibProxy);
     }
 
     public void cglibHandler(CglibProxy cglibProxy) {
         CglibProxy proxyInstance = (CglibProxy) new CglibProxyFactory(cglibProxy).getProxyInstance();
         proxyInstance.coding();
     }
-
-    public void dynamicProxyHandler(final JdkProxy jdkProxy) {
-        JdkProxyFactory jdkProxyFactory = new JdkProxyFactory(jdkProxy);
-        JdkProxyInterface jdkProxyInterfaceWaterArmy = (JdkProxyInterface) jdkProxyFactory.getProxyInstance();
-        jdkProxyInterfaceWaterArmy.coding();
-    }
-
-    private void myProxyHandler() {
-        Aop aop = new Aop();
-        UserDao userDao = new UserDao();
-        UserDaoInterface proxyInstance = (UserDaoInterface) ProxyFactory.getProxyInstance(userDao, aop);
-        proxyInstance.save();
-    }
-
 }
